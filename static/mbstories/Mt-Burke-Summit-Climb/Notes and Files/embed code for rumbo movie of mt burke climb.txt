@@ -1,0 +1,22 @@
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iYs6l83vPGY?si=_gCw-48tYnIbmiiu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+{
+    id: 'intro',
+    alignment: 'full',
+    hidden: false,
+    title: 'Display Title',
+    image: '<iframe width="560" height="315" src="https://www.youtube.com/embed/iYs6l83vPGY?si=_gCw-48tYnIbmiiu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>',
+    description: 'The climb to the summit of Mt Burke in 30 seconds.',
+    location: {
+          center: [-114.579619,50.286483],
+          zoom: 15.42,
+          pitch: 77,
+          bearing: 88
+    },
+    mapAnimation: 'flyTo',
+    rotateAnimation: false,
+    callback: '',
+    onChapterEnter: [],
+    onChapterExit: []
+},

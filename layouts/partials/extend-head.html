@@ -1,0 +1,22 @@
+
+<!-- LIGHTHOUSE OPTIMIZATION: Preload subsetted WOFF2 font (5 KiB vs 68 KiB TTF) -->
+<link rel="preload" href="/fonts/RockSalt-Subset.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- LIGHTHOUSE OPTIMIZATION: Preload LCP image (splash) to reduce render delay -->
+{{ with .Site.Params.darkPrimarySplash }}
+<link rel="preload" href="{{ . }}" as="image" fetchpriority="high">
+{{ end }}
+{{ with .Site.Params.primarySplash }}
+<link rel="preload" href="{{ . }}" as="image" fetchpriority="high">
+{{ end }}
+
+<!--To enforce rounded corners on hugo-photoswipe5-gallery thumbnails-->
+<!-- LIGHTHOUSE OPTIMIZATION: Load gallery CSS asynchronously (non-render-blocking) -->
+{{ $roundedCSS := resources.Get "css/gallery-rounded.css" }}
+{{ with $roundedCSS }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
+{{ end }}
+
+{{/* GoatCounter Analytics */}}
+<script data-goatcounter="https://grantstracks.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

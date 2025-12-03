@@ -1,0 +1,13 @@
+<aside class="pquoteCentered prose">
+    <blockquote>
+        <p>{{ .Inner | markdownify | emojify }}</p>
+        {{/* Check if an author is provided (first parameter) */}}
+        {{ if .Get 0 }}
+            <p>― {{ .Get 0 }}{{/* If source title is provided (second parameter), add it */}}
+                {{ if .Get 1 }}
+                    , {{ .Get 1 }}
+                {{ end }}
+            </p>
+        {{ end }}
+    </blockquote>
+</aside>

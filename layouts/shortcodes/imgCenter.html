@@ -1,0 +1,35 @@
+{{ $img := $.Page.Resources.GetMatch (.Get 0) }}
+{{ $imgsize := default "70" (.Get 1) }}
+{{ $imgalt := (.Get 2) }}
+{{ $imgcaption := (.Get 3) }}
+
+{{/* Create thumbnail */}}
+{{ $thumbnail := $img.Resize "800x" }}
+
+{{/* Check if AVIF version exists */}}
+{{ $imgBase := strings.TrimSuffix (path.Ext $img.Name) $img.Name }}
+{{ $avifName := printf "%s.avif" $imgBase }}
+{{ $avifImg := $.Page.Resources.GetMatch $avifName }}
+
+{{ with $imgcaption }}
+<figure class="box-center-{{ $imgsize }}">
+  <picture>
+    {{/* Use pre-converted AVIF if it exists */}}
+    {{ if $avifImg }}
+    <source type="image/avif" srcset="{{ $avifImg.RelPermalink }}">
+    {{ end }}
+    {{/* Generate WebP from thumbnail */}}
+    {{ $thumbWebP := $thumbnail.Process "webp q80" }}
+    <source type="image/webp" srcset="{{ $thumbWebP.RelPermalink }}">
+    {{/* Generate JPG from thumbnail */}}
+    {{ $thumbJPG := $thumbnail.Process "jpg q80" }}
+    <source type="image/jpeg" srcset="{{ $thumbJPG.RelPermalink }}">
+    <img src="{{ $thumbJPG.RelPermalink }}" class="nozoom" loading="lazy" decoding="async" alt="{{- $imgalt -}}">
+  </picture>
+  <div class="img-center-{{ $imgsize }}-caption">
+    <figcaption>{{- $imgcaption -}}</figcaption>
+  </div>
+</figure>
+{{ else }}
+<img src="{{- $img.RelPermalink -}}" style="float: center; margin-left: 15px; margin-bottom: 15px; border-radius: 10px; max-width: 95%; max-height: 30%; position: relative;" class="nozoom" loading="lazy" decoding="async" alt="{{- $imgalt -}}">
+{{ end }}

@@ -1,0 +1,128 @@
+<!--
+Documentation and licence at https://github.com/liwenyip/hugo-photoswipe5-gallery/
+Modified to support AVIF/WebP/JPG fallback - JPG thumbnails only
+-->
+<!-- count how many times we've called this shortcode; load the css if it's the first time -->
+{{- if not ($.Page.Scratch.Get "figurecount") }}<link rel="stylesheet" href={{ "assets/css/hugo-easy-gallery.css" | relURL }} />{{ end }}
+{{- $.Page.Scratch.Add "figurecount" 1 -}}
+{{- $image := .Page.Resources.GetMatch (printf "**%s" (.Get "src")) -}}
+
+<!-- Get metadata from sidecar file, if present. Else an empty dictionary is used. -->
+{{- $metaFileName := print $image.Name ".meta" -}}
+{{- $metadata := .Page.Resources.GetMatch ($metaFileName) -}}
+{{- if $metadata -}}
+  {{- $metadata = $metadata.Content -}}
+  {{- $metadata = $metadata | unmarshal -}}
+{{- else -}}
+  {{- $metadata = dict -}}
+{{- end -}}
+{{- $caption := .Get "caption" | default ($metadata.Caption | default $metadata.ImageDescription) -}}
+{{- $thumbnailSize := .Get "thumbnail-size" | default "300x300" -}}
+{{- $siteUseExif := .Site.Params.Gallery.UseExif -}}
+
+{{- /* Always create thumbnail from original JPG only */ -}}
+{{- $thumbnail := $image.Fill $thumbnailSize -}}
+
+{{- /* Determine base name without extension */ -}}
+{{- $baseName := replaceRE "\\.[^.]+$" "" $image.Name -}}
+
+{{- /* Look for full-size AVIF and WebP versions */ -}}
+{{- $avifPath := printf "**%s.avif" $baseName -}}
+{{- $webpPath := printf "**%s.webp" $baseName -}}
+{{- $foundAvif := .Page.Resources.GetMatch $avifPath -}}
+{{- $foundWebp := .Page.Resources.GetMatch $webpPath -}}
+
+{{- /* Build source list for picture element - full size images only */ -}}
+{{- $sources := slice -}}
+{{- with $foundAvif -}}
+  {{- $sources = $sources | append (dict "srcset" .RelPermalink "type" "image/avif") -}}
+{{- end -}}
+{{- with $foundWebp -}}
+  {{- $sources = $sources | append (dict "srcset" .RelPermalink "type" "image/webp") -}}
+{{- end -}}
+
+{{- if not ($.Page.Scratch.Get "insideGallery") }}<div class="pswp-gallery" id="photoswipe5-gallery">{{ end }}
+<div class="box{{ with .Get "caption-position" }} fancy-figure caption-position-{{.}}{{end}}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}" {{ with .Get "width" }}style="max-width:{{.}}"{{end}}>
+  <figure {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="pswp-gallery__item" style="background-image: url('{{ $thumbnail.RelPermalink }}');
+                            background-repeat: no-repeat;
+                            background-size: {{ $thumbnail.Width }}px {{ $thumbnail.Height }}px" >
+      <a href="{{ $image.RelPermalink }}"
+         data-pswp-width="{{ $image.Width }}"
+         data-pswp-height="{{ $image.Height }}"
+         itemprop="contentUrl">
+        {{- if gt (len $sources) 0 -}}
+        <picture>
+          {{- range $sources -}}
+          <source srcset="{{ .srcset }}" type="{{ .type }}">
+          {{- end -}}
+          <img itemprop="thumbnail" 
+               src="{{ $thumbnail.RelPermalink }}" 
+               width="{{ $thumbnail.Width }}" 
+               height="{{ $thumbnail.Height }}" 
+               alt="{{ $.Get "alt" | default ($.Get "title") }}">
+        </picture>
+        {{- else -}}
+          <img itemprop="thumbnail" 
+               src="{{ $thumbnail.RelPermalink }}" 
+               width="{{ $thumbnail.Width }}" 
+               height="{{ $thumbnail.Height }}" 
+               alt="{{ $.Get "alt" | default ($.Get "title") }}">
+        {{- end -}}
+      </a>
+      {{ if or .Page.Params.UseExif (and (eq .Page.Params.UseExif nil) $siteUseExif) -}}
+        <!-- merge Exif informations together with the metadata from the file -->
+        {{- with $image.Exif -}}
+          {{ $metadata = merge .Tags $metadata }}
+        {{- end -}}
+      {{- end -}}
+      <span class="pswp-caption-content">
+        {{ $metadata.Title | default ($.Get "title") }}<br>
+          {{- if $caption -}}
+            {{- $caption | safeHTML -}}<br>
+          {{- end -}}
+          {{ if or .Page.Params.UseExif (and (eq .Page.Params.UseExif nil) $siteUseExif) -}}
+          <br>
+          {{- with $metadata }}
+            {{- if .Model }}
+              Camera Model: {{ .Model }}<br>
+            {{- end -}}
+          {{- end -}}
+          {{- with $image.Exif -}}
+            {{ if and .Lat .Long }}
+              {{- $lat := (float .Lat) -}}
+              {{- $LatitudeRef := "N" }}
+              {{- if lt $lat 0.0 }}{{ $LatitudeRef = "S" }}{{ $lat = mul $lat -1 }} {{ end -}}
+              {{- $lon := (float .Long) -}}
+              {{- $LongitudeRef := "O" }}
+              {{- if lt $lon 0.0 }}{{ $LongitudeRef = "W" }}{{ $lon = mul $lon -1 }} {{ end -}}
+<a href="http://www.openstreetmap.org/?mlat={{ .Lat }}&mlon={{ .Long }}&zoom=16&layers=M" target="_blank">
+    Click for Map Location:</br>
+    <span style="color: blue;">
+        {{ $LatitudeRef }} {{ $lat | lang.FormatNumber 7 }} {{ $LongitudeRef }} {{ $lon | lang.FormatNumber 7 }}
+    </span>
+</a>
+              </a>
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      </span>
+    </div>
+    {{- if or $metadata.Title (or (or ($.Get "title") ($.Get "caption")) ($.Get "attr"))}}
+    <figcaption>
+      {{- if or (or $metadata.Title ($.Get "title"))  }}<h4>{{ ($.Get "title") | default $metadata.Title }}</h4>{{ end }}
+      {{- if or ($.Get "caption") ($.Get "attr")}}
+        <p>
+          {{- $.Get "caption" -}}
+          {{- with $.Get "attrlink" }}
+            <a href="{{ . }}">
+          {{- end -}}
+          {{- $.Get "attr" | markdownify -}}
+          {{- if $.Get "attrlink" }}</a>{{ end }}
+        </p>
+      {{- end }}
+    </figcaption>
+    {{- end }}
+  </figure>
+</div>
+{{- if not ($.Page.Scratch.Get "insideGallery") }}</div>{{ end }}

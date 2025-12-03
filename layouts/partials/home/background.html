@@ -1,0 +1,103 @@
+{{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
+<article class="prose dark:prose-invert max-w-full">
+  <div class="relative">
+    <div class="mx-auto max-w-7xl p-0">
+      <div class="relative sm:overflow-hidden">
+        <div class="fixed inset-x-0 top-0 -z-10">
+          {{ $useDefault := true }}
+          {{ $homepageImage := "" }}
+          {{ with .Site.Params.defaultBackgroundImage }}
+            {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+              {{ $homepageImage = resources.GetRemote . }}
+            {{ else }}
+              {{ $homepageImage = resources.Get . }}
+            {{ end }}
+          {{ end }}
+          {{ with .Site.Params.homepage.homepageImage }}
+            {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+              {{ $homepageImage = resources.GetRemote . }}
+              {{ $useDefault = false }}
+            {{ else }}
+              {{ $homepageImage = resources.Get . }}
+              {{ $useDefault = false }}
+            {{ end }}
+          {{ end }}
+          {{ if $homepageImage }}
+            {{ $style := "" }}
+            {{ $defaultPosition := cond $useDefault site.Params.imagePosition false }}
+            {{ with $.Params.imagePosition | default $defaultPosition }}
+              {{ $style = printf "object-position: %s;" . }}
+            {{ end }}
+            <img
+              id="background-image"
+              class="nozoom mt-0 mr-0 mb-0 ml-0 h-[1000px] w-full object-cover"
+              src="{{ $homepageImage.RelPermalink }}"
+              role="presentation"
+              {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
+            <div
+              class="from-neutral absolute inset-0 h-[1000px] bg-gradient-to-t to-transparent mix-blend-normal dark:from-neutral-800"></div>
+            <div
+              class="from-neutral absolute inset-0 h-[1000px] bg-gradient-to-t to-neutral-100 opacity-60 mix-blend-normal dark:from-neutral-800 dark:to-neutral-800"></div>
+          {{ end }}
+        </div>
+        
+                        <div class="flex justify-center">
+                            <div>
+                                {{ $splash := "" }}
+                                {{ with .Site.Params.primarySplash }}
+                                  {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+                                    {{ $splash = resources.GetRemote . }}
+                                  {{ else }}
+                                    {{ $splash = resources.Get . }}
+                                  {{ end }}
+                                {{ end }}
+                                {{ with $splash }}
+                                <span class="sr-only">{{ $.Site.Title }}</span>
+
+                                {{/* LIGHTHOUSE FIX: Added fetchpriority and loading for LCP optimization */}}
+                                <img src="{{ .RelPermalink }}" width="700" height="394"
+                                    class="splash light-mode-splash object-scale-down object-left nozoom" alt="{{ $.Site.Title }}"
+                                    fetchpriority="high" loading="eager" />
+
+                                {{ end }}
+                                {{ with .Site.Params.darkPrimarySplash }}
+                                  {{ $darkSplash := "" }}
+                                  {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+                                    {{ $darkSplash = resources.GetRemote . }}
+                                  {{ else }}
+                                    {{ $darkSplash = resources.Get . }}
+                                  {{ end }}
+                                  {{ with $darkSplash }}
+                                    {{/* LIGHTHOUSE FIX: Added fetchpriority and loading for LCP optimization */}}
+                                    <img src="{{ .RelPermalink }}" width="700" height="394"
+                                    class="splash dark-mode-splash object-scale-down object-left nozoom" alt="{{ $.Site.Title }}"
+                                    fetchpriority="high" loading="eager" />
+                                  {{ end }}
+                                {{ end }}
+                              
+                            </div>
+                            </div>
+                        
+                    <section class="prose dark:prose-invert"></section>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+<section>
+  {{ partial "recent-articles/main.html" . }}
+</section>
+{{ if .Site.Params.homepage.layoutBackgroundBlur | default false }}
+  <div
+    id="background-blur"
+    class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+  {{ $backgroundBlur := resources.Get "js/background-blur.js" }}
+  {{ $backgroundBlur = $backgroundBlur | resources.Minify | resources.Fingerprint (.Site.Params.fingerprintAlgorithm | default "sha512") }}
+  <script
+    type="text/javascript"
+    src="{{ $backgroundBlur.RelPermalink }}"
+    integrity="{{ $backgroundBlur.Data.Integrity }}"
+    data-blur-id="background-blur"
+    data-image-id="background-image"
+    {{ if $homepageImage }}data-image-url="{{ $homepageImage.RelPermalink }}"{{ end }}></script>
+{{ end }}

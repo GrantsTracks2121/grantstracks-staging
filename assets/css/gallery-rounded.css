@@ -1,0 +1,46 @@
+/* 
+ * Custom Gallery Rounded Corners Override
+ * Add this to your Hugo site to force rounded corners
+ * This file won't be overwritten by theme updates
+ */
+
+/* Gallery figures - container and overflow control */
+.gallery figure {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+/* Gallery background images - the actual thumbnail display */
+.gallery .pswp-gallery__item {
+    border-radius: 12px !important;
+}
+
+/* Standalone picture figures */
+.box figure {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+/* Standalone picture images */
+.box .pswp-gallery__item {
+    border-radius: 12px !important;
+}
+
+/* Gallery captions - bottom corners only */
+.gallery figcaption,
+.fancy-figure figcaption {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+/* Center-positioned captions - all corners */
+.gallery.caption-position-center figcaption,
+.fancy-figure.caption-position-center figcaption {
+    border-radius: 12px !important;
+}
+
+/* Ensure images inside figures respect the border radius */
+.gallery figure img,
+.box figure img {
+    border-radius: 12px !important;
+}

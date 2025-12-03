@@ -1,0 +1,2 @@
+{{/*  GSW:  added - Tue, Nov 25, 2025 - this forces links to other posts on the site to open in a new tab */}}
+<a href="{{ relref . (.Get "href") }}" target="_blank" rel="noopener"{{ with .Get "title" }} title="{{ . }}"{{ end }}>{{ .Get "text" }}</a>

@@ -1,0 +1,14 @@
+{{/*  GSW:  - Mon, Nov 10, 2025: this was produced by Claude when I added my own thumbnails to nanogallery2 */}}
+{{ $src := .Get "src" }}
+{{ $dir := path.Dir $src }}
+{{ $basename := path.BaseName $src }}
+{{ $ext := path.Ext $src }}
+{{ $thumbnailPath := printf "%s/thumbnails/%s-thumbnail%s" $dir $basename $ext }}
+
+{{ $thumbnail := .Page.Resources.GetMatch $thumbnailPath }}
+
+{{ if $thumbnail }}
+<a href="{{ $src }}" data-ngthumb="{{ $thumbnailPath }}">{{ .Get "title" }}</a>
+{{ else }}
+<a href="{{ $src }}" data-ngthumb="{{ $src }}">{{ .Get "title" }}</a>
+{{ end }}

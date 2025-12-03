@@ -1,0 +1,285 @@
+{
+            id: '010',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'The Direct Route Up a Well-Travelled Cutline',
+            image: 'assets/010-IMG_5661.jpg',
+            description: 'This 2D image doesn\'t accurately show the 3D slope of the "Direct Route" cutline we followed initially. It was an unrelentingly hard slog nowhere but straight up.',
+            location: {
+                center: [-114.559478,50.285325],
+                zoom: 16.44,
+                pitch: 83,
+                bearing: 90.40
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '015',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'Beauty Shines When You Attend to It',
+            image: 'assets/015-IMG_5665.jpg',
+            description: 'As you ascend, one's focus is on the physical effort and psychological mind games during the climb. But noticing little bits of beauty along the way bring brief reminders of the pure joy of being here.',
+            location: {
+                center: [-114.543350,50.284850],
+                zoom: 15,
+                pitch: 63,
+                bearing: -83.20
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '020',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'This Gnarly Tree Carcass Show the Harshness of the Environment Up Here',
+            image: 'assets/020-IMG_5672.jpg',
+            description: '',
+            location: {
+                center: [-114.538589,50.286033],
+                zoom: 16.88,
+                pitch: 85,
+                bearing: 64.80
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '025',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'A Sentinel Outcrop Above the Treeline',
+            image: 'assets/025-IMG_5690.jpg',
+            description: 'Long after leaving the treeline and negotiating the winding, scree-covered path up, this prominent outcrop in the foreground shows the scale of the land and mountains in the background.',
+            location: {
+                center: [-114.532036,50.287061],
+                zoom: 16.40,
+                pitch: 77.50,
+                bearing: 33.60
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '030',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'A Geocache Find Along the Way',
+            image: 'assets/030-IMG_5692.jpg',
+            description: 'There are number of geocaches hidden along the path up the mountain. The finding hint for this one was "In a hole Covered by rocks", which was almost no help at all given there was nothing but rock and rock covering rock up here. But eventually it was found.',
+            location: {
+                center: [-114.531669,50.287281],
+                zoom: 16.36,
+                pitch: 74.50,
+                bearing: 0
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '035',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'A Rare Selfie With the Summit in the Background',
+            image: 'assets/035-IMG_5700.jpg',
+            description: 'You can see the old Cameron Fire Lookout hut just beside my ear. Seeing the goal like that and knowing how much effort was yet needed to get there was almost cruel.',
+            location: {
+                center: [-114.527764,50.288842],
+                zoom: 11.70,
+                pitch: 85,
+                bearing: 37.60
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '040',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'The Summit Seems to Be Guared by Rock Walls',
+            image: 'assets/040-IMG_5702.jpg',
+            description: 'We\'re getting closer to the top and it seems to be guarded not only by elevation, but rock walls as well.',
+            location: {
+                center: [-114.526808,50.289456],
+                zoom: 16.84,
+                pitch: 72,
+                bearing: 157.60
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '045',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'The Cameron Lookout Built in 1929 Is Showing Its Age',
+            image: 'assets/045-IMG_5704.jpg',
+            description: 'Cameron Lookout was built in 1929 and finally decommissioned in 1954. During that time it was the highest fire lookout in Canada. The structure is slowly returning to earth.',
+            location: {
+                center: [-114.524361,50.290122],
+                zoom: 13.11,
+                pitch: 80.50,
+                bearing: -8
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '050',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'The View From the Lookout Window',
+            image: 'assets/050-IMG_5706.jpg',
+            description: 'The view in all directions is breathtaking from the lookout window. The commanding mountain range to the west is the most impressive.',
+            location: {
+                center: [-114.524414,50.290233],
+                zoom: 13.73,
+                pitch: 75,
+                bearing: -106.40
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '055',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'A Geocache Find Along the Way',
+            image: 'assets/055-IMG_5709.jpg',
+            description: 'After all the effort it took to get here, I made of point of taking pictures of what had been the end goal "up there" for so long during the climb.',
+            location: {
+                center: [-114.524292,50.290328],
+                zoom: 15.01,
+                pitch: 80,
+                bearing: -72.80
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '060',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'A Stylized View of the Lookout',
+            image: 'assets/060-IMG_5716.jpg',
+            description: 'Here\'s the lookout again, this time with a painterly style applied.',
+            location: {
+                center: [-114.524253,50.289994],
+                zoom: 16.96,
+                pitch: 63.15,
+                bearing: -15.99
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '065',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'Starting Back Down',
+            image: 'assets/065-IMG_5721.jpg',
+            description: 'The majority of the geocaching event participants shot back down the mountain with four of us taking as much time as we needed (and it was a substantial amount) to descend.',
+            location: {
+                center: [-114.527108,50.289189],
+                zoom: 16.27,
+                pitch: 57.50,
+                bearing: -125.60
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '070',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'A Geocache Find Along the Way',
+            image: 'assets/070-IMG_5724.jpg',
+            description: 'I asked Dan to pose for this shot just to show the scale of "human to rock".',
+            location: {
+                center: [-114.531883,50.287106],
+                zoom: 13.42,
+                pitch: 78,
+                bearing: -67.20
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '075',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'Cataract Creek Is Completely Dry',
+            image: 'assets/075-IMG_5740.jpg',
+            description: 'We took a new trail down to Cataract Creek when descended back to the trailhead. This trail is built on the original trail which was partially obliterated by floods in 2013. This trail offers much more gradual slopes and is recommended.',
+            location: {
+                center: [-114.563400,50.282428],
+                zoom: 14.87,
+                pitch: 73.50,
+                bearing: -61.61
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        },
+{
+            id: '080',
+            alignment: 'left', // center, left, right, full
+            hidden: false,
+            title: 'The Geocaching Event Attendees at the Lookout',
+            image: 'assets/080-Mt-Burke-Summit-GC-Event-Pic-Aug-30-2025.jpg',
+            description: 'There were nine attendees at the Fourteen Years Later @ the Mount Burke Summit geocaching event. The event organizer, Don, is behind the camera.',
+            location: {
+                center: [-114.524414,50.290233],
+                zoom: 14.13,
+                pitch: 72.50,
+                bearing: -124.71
+            },
+            mapAnimation: 'flyTo', // flyTo, easeTo, jumpTo
+            rotateAnimation: false, // true, false
+            callback: '',
+            onChapterEnter: [],
+            onChapterExit: []
+        }

@@ -1,0 +1,754 @@
+
+/* LIGHTHOUSE OPTIMIZATION: Using subsetted WOFF2 font (5 KiB vs 68 KiB original TTF)
+   Only contains characters for "Grant's Tracks" */
+@font-face {
+  font-family: RockSalt-Regular;
+  font-display: swap;
+  src: url('/fonts/RockSalt-Subset.woff2') format('woff2'),
+       url('/fonts/RockSalt-Regular.ttf') format('truetype'); /* fallback */
+}
+
+.RockSalted {
+  font-family: RockSalt-Regular;
+  font-size: .9rem;
+}
+
+/*
+.RockSalted {
+  font-family: RockSalt-Regular;
+}
+*/
+@media screen and (min-width:400px) {
+  .RockSalted {
+      font-size: .8em;
+  }
+}
+@media screen and (min-width:660px) {
+  .RockSalted {
+      font-size: 1.5em;
+  }
+}
+@media screen and (min-width:1200px) {
+  , RockSalted {
+      font-size: 2em;
+  }
+}
+/*  This section is AI-created classes to support the switching of the splash image on the home page */
+
+/* --- Default (Light Mode) Styles --- */
+/* These rules apply when the html tag does NOT have the 'dark' class */
+.splash.light-mode-splash {
+  display: block !important; /* Show light image by default */
+/*  margin-top: -25px;*/
+}
+
+.splash.dark-mode-splash {
+  display: none !important;    /* Hide dark image by default */
+/*  margin-top: -25px;*/
+}
+
+/* --- Dark Mode Styles --- */
+/* These rules apply when the <html> tag HAS the 'dark' class */
+html.dark .splash.light-mode-splash {
+  display: none !important; /* Hide light image in dark mode */
+/*  margin-top: -25px;*/
+}
+
+html.dark .splash.dark-mode-splash {
+  display: block !important; /* Show dark image in dark mode */
+/*  margin-top: -25px;*/
+}
+
+/*  CSS to support make the captions in the figure tag look like my shortcode ImgRight cacptions----- */
+
+figure {
+  padding-left: 10px;
+  padding-bottom: 20px;
+  margin-top: 5px;
+  font-style: italic;
+  font-weight: 600;
+  font-size: medium;
+}
+/*  this figure tag is specifically for images inserted left or right in a tabpanel----- */
+/*  the class is called by eithe imgLeftinPanel.html or imgRightinPanel.html----- */
+/*  the only change is the   padding-top: 1rem; to match the tabpanel padding----- */
+figure-in-panel {
+  padding-left: 10px;
+  padding-bottom: 20px;
+  padding-top: 1rem;
+  margin-top: 5px;
+  font-style: italic;
+  font-weight: 600;
+  font-size: medium;
+}
+
+table caption {
+  font-style: italic;
+  font-weight: 400;
+  font-size: x-large;
+  margin-bottom: 10px;
+
+}
+/*  This id is applied the the sidebyside table*/
+
+#sidebyside {
+margin-bottom: -30px;
+width: 90%;
+}
+/*  from https://tekki-tipps.de/en/hugo-page-bundles-images/#example-shortcode-img100width */
+
+/*  CSS to support shortcode imgRight ----- */
+/*  Aug-2024 changed all  box-right-30 to box-right-40 which will look better in full-width layouts ----- */
+/* img {
+width: 100%;
+border-radius: 15px;
+margin-bottom: -10px;
+}
+*/
+
+/*  - Tue, Nov 25, 2025: Border-radius for imgLeft and imgRight images ----- */
+.box-right-40 img,
+.box-right-30 img,
+.box-right-50 img,
+.box-left-40 img,
+.box-left-30 img,
+.box-left-50 img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.box-right-50 {
+width: 50%;
+}
+.box-right-40 {
+width: 40%;
+}
+.box-right-30 {
+width: 30%;
+}
+
+.box-right-40,
+.box-right-30,
+.box-right-50 {
+display: block;
+float: right;
+margin: 0.3rem 0 0 1.2rem;
+margin-bottom: 2px;
+/* border: 2px solid lightgrey; */
+}
+
+.img-right-40-caption,
+.img-right-30-caption,
+.img-right-50-caption {
+  padding-left: 10px;
+  padding-bottom: 20px;
+  margin-top: 5px;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+/*  Responsive */
+@media (max-width: 575.8px) {
+.img-right-40-caption,
+.img-right-30-caption,
+.img-right-50-caption {
+  display: none;
+}
+}
+@media (max-width: 375.8px) {
+.box-right-40,
+.box-right-30,
+.box-right-50 {
+  float: unset;
+  width: 100%;
+  margin: 1.0rem 0 1.0rem;
+}
+}
+/* End - Shortcode imgRight shortcode ----- */
+
+/* Css to support imgLeft shortcode ----- */
+.box-left-50 {
+width: 50%;
+display: block;
+float: left;
+margin: 0.3rem 1.2rem 0 0;
+margin-bottom: 2px;
+/* border: 2px solid lightgrey; */
+}
+.box-left-40 {
+width: 40%;
+display: block;
+float: left;
+margin: 0.3rem 1.2rem 0 0;
+margin-bottom: 2px;
+/* border: 2px solid lightgrey; */
+}
+.box-left-30 {
+width: 30%;
+display: block;
+float: left;
+margin: 0.3rem 1.2rem 0 0;
+margin-bottom: 2px;
+/* border: 2px solid lightgrey; */
+}
+
+.img-left-50-caption,
+.img-left-40-caption,
+.img-left-30-caption {
+  padding-left: 10px;
+  padding-bottom: 20px;
+  margin-top: 5px;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+/*  Responsive */
+@media (max-width: 575.8px) {
+.img-left-50-caption,
+.img-left-40-caption,
+.img-left-30-caption {
+  display: none;
+}
+}
+@media (max-width: 375.8px) {
+.box-left-50,
+.box-left-40,
+.box-left-30 {
+  float: unset;
+  width: 100%;
+  margin: 1.0rem 0 1.0rem;
+}
+}
+
+/*  this is called only with imgLeftinPanel.html or imgRightinPanel.html are used. */
+.box-left-50.figure-in-panel,
+.box-left-40.figure-in-panel,
+.box-left-30.figure-in-panel {
+  padding-top: 1rem;
+}
+
+.box-right-50.figure-in-panel,
+.box-right-40.figure-in-panel,
+.box-right-30.figure-in-panel {
+  padding-top: 1rem;
+}
+/*  End - Shortcode imgLeft shortcode ----- */
+
+
+/* Css to support imgCenter shortcode  ----- 
+
+.imgCenter {
+  float: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  border-radius:15px;
+  max-width: 70%;
+  position: relative;
+}
+*/
+/*  Shortcode imgCenter ----- */
+.box-center {
+/*  margins on auto was the ANSWER to centering ----- */
+max-width: 85%;
+max-height: 70%;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: -25px;
+border-radius: 15px;
+/*   margin: 0.3rem 3rem 3rem 1.2rem; */
+}
+/* img {
+  width: 100%;
+  border-radius: 20px;
+} */
+.img-center-caption {
+  font-style: italic;
+  font-size: 1rem;
+}
+
+
+/*  This is the indent of the caption for images called by imgCenter shortcode */
+.img-center-caption figcaption {
+   padding-left: 10px;
+   padding-bottom: 20px;
+   margin-top: 5px;
+   font-style: italic;
+   font-weight: 400;
+   font-size: .9rem;
+}
+
+/*  Responsive */
+@media (max-width: 575.8px) {
+.img-center-caption {
+  display: none;
+ }
+}
+@media (max-width: 375.8px) {
+.box-center {
+  float: unset;
+  width: 100%;
+  margin: 1.0rem 0 1.0rem;
+ }
+}
+
+/* End - Shortcode imgCenter ----- */
+
+/*  Previous attempts - saved just in case */
+
+/* When I center images, the caption doesn't center along with it, so I'm indenting the "figcaption" attribute */
+
+/* This isn't working so commenting out for now
+.figcaption {
+padding-left: 5%;
+}
+*/
+
+/* GSW - aligning and sizing images */
+
+/* EVERYTHING BELOW HERE IS COMMENTED OUT - Captions don't follow the edge of the images, so if you center, the caption is still left-aligned.
+.imgCenter {
+  float: center;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  max-width: 90%;
+  position: relative;
+}
+
+.imgRight30 {
+  float: right;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  max-width: 30%;
+  position: relative;
+}
+
+.imgLeft30 {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  max-width: 30%;
+  position: relative;
+}
+
+.imgRight50 {
+  float: right;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  max-width: 50%;
+  position: relative;
+}
+
+.imgLeft50 {
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  max-width: 50%;
+  position: relative;
+}
+*/
+
+
+/************************************
+timeline
+************************************/
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  background-color: #444;
+  top: 0;
+  bottom: 0;
+  left: 10%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.timeline .container {
+  padding: 10px 10px 10px 40px;
+  margin-top: 10px;
+  position: relative;
+  /* background-color: gray; */
+  width: 90%;
+  left: 10%;
+}
+/* The circles on the timeline */
+.timeline .container::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: -12px;
+  background-color: rgb(106, 215, 229);
+  border: 4px solid #444;
+  top: 0px;
+  border-radius: 50%;
+  z-index: 1;
+}
+/* date display */
+.timeline .container .date {
+  position: absolute;
+  top: 22px;
+  z-index: 1;
+  left: -10%;
+  font-size: large;
+}
+
+/* Add arrows to the right container (pointing left) */
+.timeline .container::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 30px;
+  width: 0;
+  z-index: 1;
+  left: 26px;
+  border: medium solid #6ad7e5;
+  border-width: 13px 13px 13px 0px;
+  border-color: #6ad7e5 #6ad7e5 transparent transparent;
+}
+/* The actual content */
+.timeline .content {
+  box-shadow: 0 0 3px 3px #6ad7e5;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+  transition: box-shadow 0.3s;
+}
+
+/* small shadow change on hover*/
+.timeline .content:hover {
+  box-shadow: 0 0 3px 4px #6ad7e5;
+}
+
+/* card title format */
+.timeline .content .title {
+  padding: 5px 30px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* time moment format*/
+.timeline .content .moment {
+  color: #c41a16;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+}
+
+/* body size */
+.timeline .content .body {
+  padding: 5px 30px;
+}
+
+/* responsive for small devices*/
+@media screen and (max-width: 600px) {
+  .timeline .container {
+    padding: 10px 10px 0px 40px;
+    left: 5%;
+    width: 95%;
+  }
+  .timeline .container .date {
+    font-size: small;
+    transform: rotate(-90deg);
+    left: -5%;
+    top: 30px;
+  }
+  .timeline .container::after {
+    left: 3px;
+  }
+  .timeline .content .body {
+    padding: 5px 5px;
+  }
+  .timeline .content .moment {
+    position: relative;
+  }
+}
+
+/* css for attachments shortcode*/
+
+section.attachments {
+  margin: 1.5rem 0;
+  position: relative;
+
+  label {
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .attachments-files {
+    display: block;
+    font-size: 1rem;
+    margin: 0;
+
+    ul {
+      margin-top: 0;
+    }
+
+    .attachment-size {
+      display: inline-block;
+      color: var(--font-color-muted);
+    }
+  }
+
+  .new-tab {
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+  }
+}
+
+
+
+/* Testing Tab Pane code */
+
+
+.tabpane {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.tabpane__input {
+  position: absolute;
+  opacity: 0;
+}
+.tabpane__label {
+  position: relative;
+  flex-shrink: 1;
+  padding: 0.5rem 1rem;
+  color: blanchedalmond;
+/* Unselected background color of the tab */
+/* This color matches the "Forest" color scheme */
+/* GSW: Changed background color to cadetblue to match teal Selected color */
+  background-color: cadetblue;
+  border: solid 2px #eee;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom: none;
+  cursor: pointer;
+  z-index: 999;
+
+  &:first-of-type {
+    border-top-left-radius: 0.5rem;
+    border-left-width: 2px;
+  }
+  &:last-of-type {
+    border-top-right-radius: 0.5rem;
+    border-right-width: 2px;
+  }
+}
+
+.tabpane__panel {
+  order: 999;
+  display: none;
+  width: 100%;
+  margin-top: -2px;
+  padding: 1rem;
+  border: solid 2px #eee;
+}
+
+.tabpane__input:checked + .tabpane__label {
+/* SELECTED background color of the tab */
+/* This color matches the "Forest" color scheme */
+/* GSW: changed background color to teal - and added font-weight */
+  background-color: teal;
+  font-weight: bolder;
+}
+.tabpane__input:checked + .tabpane__label + .tabpane__panel {
+  display: block;
+}
+
+/* Code for external link icon called in render-links.html */
+.fa {
+  font-family: var(--fa-style-family, "Font Awesome 6 Free");
+  font-weight: var(--fa-style, 900); }
+.fa {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: var(--fa-display, inline-block);
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto; }
+
+.fa-external-link::before {
+    content: "\f08e"; }
+
+
+/* Got this from https://stackoverflow.com/questions/4861224/how-to-use-css-to-surround-a-number-with-a-circle */
+/* To be applied to numbers in category lists */
+/*
+.numberCircle {
+  border-radius: 80%;
+  width: 35px;
+  height: 35px;
+  padding: 6px;
+  float: right;
+  background: #fff;
+  border: 2px solid #666;
+  color: #666;
+  text-align: center;
+  font: 18px Arial, sans-serif;
+  font-weight: bolder;
+} */
+
+.numberCircle {
+  border-radius: 999px; /* This makes it pill-shaped */
+  width: auto; /* Allow width to adjust based on content */
+  min-width: 35px; /* Ensure a minimum width even for single digits */
+  height: 35px; /* Keep the height for vertical centering */
+  padding: 6px 12px; /* Adjust padding for horizontal elongation */
+  float: right;
+  background: #fff;
+  border: 2px solid #666;
+  color: #666;
+  text-align: center;
+  font: 18px Arial, sans-serif;
+  font-weight: bolder;
+  display: inline-flex; /* Use flexbox for easy vertical and horizontal centering */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+}
+
+/* This is for pullquotes - first float right version */
+.pquoteRight {
+  float: right;
+  width: 33%;
+  background: url(/openquote.gif) top left no-repeat;
+  font-size: 20px;
+  line-height: 1.3;
+  font-style: italic;
+  padding: 10px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+.pquoteRight blockquote {
+  margin: 0;
+  border-left: none; /* Removes the vertical line */
+}
+
+/* This is for pullquotes - this is the centered version */
+.pquoteCentered {
+  margin: 0 auto; /* This sets top/bottom margin to 0 and left/right to auto */  
+  width: 75%;
+  background: url(/openquote.gif) top left no-repeat;
+  font-size: 20px;
+  line-height: 1.3;
+  font-style: italic;
+  padding: 10px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+.pquoteCentered blockquote {
+  margin: 0;
+  border-left: none; /* Removes the vertical line */
+}
+
+/*  Shortcode imgCenter with size options ----- */
+
+/* Base styling for all centered images */
+.box-center-50,
+.box-center-60,
+.box-center-70,
+.box-center-85 {
+  max-height: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -25px;
+  border-radius: 15px;
+}
+
+/* Specific width settings */
+.box-center-50 {
+  max-width: 50%;
+}
+
+.box-center-60 {
+  max-width: 60%;
+}
+
+.box-center-70 {
+  max-width: 70%;
+}
+
+.box-center-85 {
+  max-width: 85%;
+}
+
+/* Apply border-radius to the actual images */
+.box-center-50 img,
+.box-center-60 img,
+.box-center-70 img,
+.box-center-85 img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* Caption styling for all sizes */
+.img-center-50-caption,
+.img-center-60-caption,
+.img-center-70-caption,
+.img-center-85-caption {
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.img-center-50-caption figcaption,
+.img-center-60-caption figcaption,
+.img-center-70-caption figcaption,
+.img-center-85-caption figcaption {
+  padding-left: 10px;
+  padding-bottom: 20px;
+  margin-top: 5px;
+  font-style: italic;
+  font-weight: 400;
+  font-size: .9rem;
+}
+
+/* Responsive */
+@media (max-width: 575.8px) {
+  .img-center-50-caption,
+  .img-center-60-caption,
+  .img-center-70-caption,
+  .img-center-85-caption {
+    display: none;
+  }
+}
+
+@media (max-width: 375.8px) {
+  .box-center-50,
+  .box-center-60,
+  .box-center-70,
+  .box-center-85 {
+    float: unset;
+    width: 100%;
+    margin: 1.0rem 0 1.0rem;
+  }
+}
+
+/* End - Shortcode imgCenter with sizes ----- */
+
+
+/* Background hero image - prevent repeating */
+.single_hero_background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

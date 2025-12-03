@@ -1,0 +1,29 @@
+{{/*  GSW:  source of the base code: https://tekki-tipps.de/en/hugo-page-bundles-images/ */}}
+{{/*  GSW:  help from: https://web.dev/articles/codelab-serve-images-webp */}}
+{{/*  GSW:  got split image idea from: https://martijnvanvreeden.nl/hugo-shortcode-to-serve-images-in-next-gen-formats/ */}}
+{{/*  GSW: The images in the content of the post will be housed in the "incontent" folder - both webp and jpg formats  */}}
+{{/*  GSW: The original code used $img.RelPermalink but that had the extension attached in the srcset lines  */}}
+{{/*  GSW: so I added the strings.TrimSuffix to cut that off - took some doing but it seems to work!  */}}
+{{ $img := $.Page.Resources.GetMatch (.Get 0) }}
+{{ $type_arr := split $img "." }}
+{{ $srcbase := index $type_arr 0 }}
+{{ $imgalt := (.Get 1) }}
+{{ $imgcaption := (.Get 2) }}
+{{ with $srcbase }}
+  {{ with $imgcaption }}
+  <figure class="box-center">
+    <picture>
+          <source type="image/webp" srcset="{{- $srcbase -}}.webp">
+          <source type="image/jpeg" srcset="{{- $srcbase -}}.jpg">
+          <img src="{{- $srcbase -}}" class="imgCenter, nozoom" loading="lazy" decoding="async" alt="{{- $imgalt -}}">
+    </picture>
+    <div class="img-center-caption">
+      <figcaption>
+        {{- $imgcaption -}}
+      </figcaption>
+    </div>
+  </figure>
+  {{ else }}
+    <img src="{{- $img.RelPermalink -}}" style="float: center; margin-left: 15px; margin-bottom: 15px; border-radius: 10px; max-width: 95%; position: relative;" class="nozoom" loading="lazy" decoding="async" alt="{{- $imgalt -}}">
+  {{ end }}
+{{ end }}
