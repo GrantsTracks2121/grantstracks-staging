@@ -17,6 +17,7 @@ enableCodeCopy = false
 
 disableImageOptimization = false
 disableTextInHeader = false
+disableImageZoom = true
 
 # defaultBackgroundImage = "IMAGE.jpg" # used as default for background images for POSTS
 # defaultFeaturedImage = "IMAGE.jpg" # used as default for featured images in all articles
