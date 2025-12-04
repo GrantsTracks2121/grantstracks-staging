@@ -3,10 +3,11 @@
 <link rel="preload" href="/fonts/RockSalt-Subset.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- LIGHTHOUSE OPTIMIZATION: Preload LCP image (splash) to reduce render delay -->
-{{ with .Site.Params.darkPrimarySplash }}
+<!-- Note: extend-head.html receives .Site as context, so use .Params not .Site.Params -->
+{{ with .Params.darkPrimarySplash }}
 <link rel="preload" href="{{ . }}" as="image" fetchpriority="high">
 {{ end }}
-{{ with .Site.Params.primarySplash }}
+{{ with .Params.primarySplash }}
 <link rel="preload" href="{{ . }}" as="image" fetchpriority="high">
 {{ end }}
 
@@ -17,4 +18,3 @@
   <link rel="stylesheet" href="{{ .RelPermalink }}" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="{{ .RelPermalink }}"></noscript>
 {{ end }}
-
